@@ -29,3 +29,13 @@ CREATE TABLE clientes(
 	data_cadastro DATETIME DEFAULT GETDATE()
 );
 
+CREATE TABLE emprestimos(
+	id_emprestimos INT PRIMARY KEY,
+	id_clientes INT,
+	id_livros INT,
+	data_emprestimo DATE NOT NULL,
+	data_devolucao DATE,
+	FOREIGN KEY (id_clientes) REFERENCES clientes(id_cliente),
+	FOREIGN KEY (id_livros) REFERENCES livros (id_livro)
+);
+
