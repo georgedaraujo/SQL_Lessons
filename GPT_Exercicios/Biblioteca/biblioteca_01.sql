@@ -32,8 +32,9 @@ CREATE TABLE clientes(
 	data_cadastro DATETIME DEFAULT GETDATE()
 );
 
+
 CREATE TABLE emprestimos(
-	id_emprestimos INT PRIMARY KEY,
+	id_emprestimos INT PRIMARY KEY IDENTITY(1,1),
 	id_clientes INT,
 	id_livros INT,
 	data_emprestimo DATE NOT NULL,
@@ -103,3 +104,35 @@ INSERT INTO livros (id_livro, titulo, ano_publicacao, preco, id_autor, categoria
 		(10001, 'Cem anos de solidão', 1977, 41.14, 5, 'Contemporanea', 1000),
 		(10002, 'O amor nos tempos do cólera', 1986, 51.24, 5, 'Contemporanea', 1000),
 		(10003, 'A revoada', 1980, 51.64, 5, 'Contemporanea', 1000)
+
+INSERT INTO clientes (id_cliente, nome, email, telefone)
+	VALUES
+		(1, 'Antonio Bernardo', 'antoniob@gmail.com', '(11) 994375817'),
+		(2, 'Bruno Rocha', 'bruno.rocha@paulicon.com.br', '(11) 995657899'),
+		(3, 'Caio Brasil', 'caiobbrasil@gmail.com', '(11) 986643232'),
+		(4, 'George Araujo', 'georgefpar@gmail.com', '(11) 991782097'),
+		(5, 'Tatiane Verginia', 'tatiane.vergs@gmail.com', '(11) 987073649')
+
+SELECT * FROM clientes;
+
+INSERT INTO emprestimos(id_clientes, id_livros, data_emprestimo, data_devolucao)
+	VALUES
+		(1, 10100, '2026-07-25', '2026-07-27'),
+		(4, 10003, '2026-07-14', ''),
+		(2, 10100, '2026-07-27', ''),
+		(5, 10001, '2026-06-29', '2026-07-12'),
+		(3, 10601, '2026-07-17', '2026-07-25'),
+		(4, 10201, '2026-07-17', '2026-07-26')
+
+	
+
+SELECT 
+	id_clientes,
+	id_livros,
+	data_emprestimo,
+	
+	CASE
+		WHEN data_devolucao = '' THEN NULL 
+		ELSE data_devolucao
+	END data_devolucao
+FROM emprestimos;
