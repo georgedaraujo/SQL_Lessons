@@ -16,6 +16,28 @@ SELECT * FROM emprestimos;
 SELECT * FROM autores
 	WHERE nacionalidade = 'russia';
 
+-- Selecionando qualquer que não seja russo (!=)
+SELECT * FROM autores
+	WHERE nacionalidade != 'russia';
+
+SELECT * FROM emprestimos
+	WHERE id_clientes = 4 AND id_emprestimos = 6;
+
+SELECT * FROM emprestimos
+	WHERE id_clientes = 2 OR id_livros = 10100;
+
+SELECT * FROM autores
+	WHERE nacionalidade IN ('brasil', 'colombia');
+
+SELECT * FROM clientes
+	WHERE nome LIKE 'G%';
+
+SELECT * FROM clientes
+	WHERE nome LIKE '%a';
+
+SELECT * FROM clientes
+	WHERE nome LIKE '%Brasil%';
+
 -- Selecionando por ordem (nesse caso, alfabética) ORDER BY
 SELECT * FROM autores
 	ORDER BY nome DESC;

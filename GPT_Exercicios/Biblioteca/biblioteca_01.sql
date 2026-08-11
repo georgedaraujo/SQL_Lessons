@@ -136,3 +136,8 @@ SELECT
 		ELSE data_devolucao
 	END data_devolucao
 FROM emprestimos;
+
+INSERT INTO clientes (id_cliente, nome, email, telefone)
+	VALUES
+		(6, 'Taynara Moura', 'taymmoura@gmail.com', '(11) 986774342'),
+		(7, 'Fabiano Araujo', 'fabianobernardo@gmail.com', '(11) 991226722')
